@@ -21,25 +21,21 @@ function initializeDemo() {
      * @return {Object} methods that can be applied on the given loader
      */
     function Loader() {
-        const MAX_PROGRESS = 1;
+        // Loader 0 moves over horizontal angle and loader90 moves vertically
+        const loader0 = document.querySelector('.loader-box-vertical');
+        const loader90 = document.querySelector('.loader-box-horizontal');
         
-        const loaderVertical = document.querySelector('.loader-box-vertical');
-        const loaderHorizontal = document.querySelector('.loader-box-horizontal');
         const loaderContainer = document.querySelector('.loader-container');
-
         const timePassedElement = document.querySelector('.info-field.time-passed .field-value');
-        const totalIterationsElement = document.querySelector('.info-field.iterations-completed .field-value');
+        
+        const hSpace = loaderContainer.offsetWidth - loader0.offsetWidth;
+        const vSpace = loaderContainer.offsetHeight - loader90.offsetHeight;
 
-        let startTime;
-
+        let startTime = 0;
         let xInc = 15;
         let yInc = 3;
         let xPos = 0;
         let yPos = 0;
-        let horizontalIterations = 0;
-        
-        let xIterations = 0;
-        let yIterations = 0;
 
         // Animation frame identifier which can be used to stop the animation
         let animationFrameId;
@@ -54,12 +50,17 @@ function initializeDemo() {
             }
 
             cancelAnimationFrame(animationFrameId);
+            animationFrameId = undefined;
         }
         
         function reset() {
-            xPos = yPos = 0;
+            startTime = xPos = yPos = 0;
             xInc = Math.abs(xInc);
             yInc = Math.abs(yInc);
+
+            if (!animationFrameId) {
+                requestAnimationFrame(loadStep);
+            }
         }
 
         /**
@@ -78,24 +79,23 @@ function initializeDemo() {
             startTime = startTime || timestamp;
             const timeSpent = Math.round((timestamp - startTime) / 1000) + ' seconds';
 
-            loaderVertical.style.left = xPos + 'px';
-            loaderHorizontal.style.top = yPos + 'px';
+            loader0.style.left = xPos + 'px';
+            loader90.style.top = yPos + 'px';
 
-            xPos = Math.min(loaderContainer.offsetWidth - loaderHorizontal.offsetHeight, xPos + xInc);
-            yPos = Math.min(loaderContainer.offsetHeight, yPos + yInc);
-            timePassedElement.textContent = timeSpent;
+            xPos = Math.min(xInc + xPos, hSpace);
+            yPos = Math.min(yInc + yPos, vSpace);
 
-            if (xPos >= loaderContainer.offsetWidth - loaderHorizontal.offsetHeight || xPos <= 0) {
-                xIterations++;
+            if (xPos >= hSpace || xPos <= 0) {
                 xInc = -xInc;
+                xPos = Math.abs(xPos);
             }
 
-            if (yPos >= loaderContainer.offsetHeight || yPos <= 0) {
+            if (yPos >= vSpace || yPos <= 0) {
                 yInc = -yInc;
-                yIterations++;
+                yPos = Math.abs(yPos);
             }
 
-            totalIterationsElement.textContent = 'x = ' + xIterations + ', y = ' + yIterations;
+            timePassedElement.textContent = timeSpent;
         }
 
         /**
