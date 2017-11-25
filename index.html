@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Indeterminate Loader</title>
+    <link rel="stylesheet" href="indeterminate-loader.css">
+</head>
+<body>
+    <div class="demo-container">
+        <div class="header">
+            <h2>requestAnimationFrame indeterminate loader</h2>
+            <p>
+                Indeterminate loader keeps moving around until told to stop, this loader
+                gives a sense that item is under progress but it's uncertain about the completion of 
+                the task.
+            </p>
+        </div>
+
+        <div class="indeterminate-loader">
+            <div class="loader-container">
+                <div class="loader-box-vertical"></div>
+                <div class="loader-box-horizontal"></div>
+            </div>
+
+            <div class="loader-info">
+                <h4 class="info-field time-passed">
+                    Time Passed <span class="field-value">Not Available</span>
+                </h4>
+                
+                <h4 class="info-field iterations-completed">
+                    Iterations <span class="field-value">Not Available</span>
+                </h4>
+            </div>
+
+            <div class="loader-controls">
+                <button class="loader-control start">Start Animation</button>
+                <button class="loader-control stop">Stop Animation</button>
+                <button class="loader-control reset">Reset Animation</button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <h4>Open Sourced under MIT LICENSE. Copy it like totes you want. Have some fun!!! :)</h4>
+            <h5>Source code available on the lovely <a href="https://github.com/abdulhannanali/indeterminate-loader" rel="noopener" target="_blank">Github</a></h5>
+        </div>
+    </div>
+
+    <noscript>
+        <h2>
+            It's 2017, seriously I have no idea why even I am including <code>noscript</code> tag in 2017, however, if you don't have a javascript installed, INSTALL ONE now seriously LEAVE EVERYTHING AND INSTALL IT NOW.
+        </h2>
+    </noscript>
+    <script src="indeterminate-loader.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+body {
+    background: black;
+    color: white;
+    margin: 0;
+    font-family: Courier New, Courier, monospace;
+}
+
+.demo-container {
+    max-width: 760px;
+    margin: 0 auto;
+    border-top: 3px green solid;
+}
+
+.demo-container .indeterminate-loader {
+    border-top: 1px white solid;
+    padding: 10px;
+}
+
+.demo-container .indeterminate-loader .loader-container {
+    position: relative;
+    background: rgb(191, 189, 189);
+    width: 100%;
+    height: 90px;
+}
+
+.demo-container
+.indeterminate-loader
+.loader-container
+.loader-box-vertical {
+    position: absolute;
+    background-color: rgb(188, 67, 204);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 20px;
+    mix-blend-mode: color-burn;
+}
+
+.demo-container
+.indeterminate-loader
+.loader-container
+.loader-box-horizontal {
+    position: absolute;
+    background-color: rgb(27, 173, 235);
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 100%;
+    mix-blend-mode: multiply;
+}
+
+.demo-container
+.indeterminate-loader
+.loader-info {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 10px 0;
+    border-top: 1px rgb(53, 252, 192) solid;
+}
+
+.demo-container
+.indeterminate-loader
+.loader-info
+.info-field {
+    border-bottom: 1px green solid;
+    font-size: 16px;
+}
+
+.info-field .field-value {
+    font-size: 25px;
+    color: rgb(62, 218, 215);
+}
+
+.demo-container .loader-controls {
+    text-align: center;
+}
+
+.demo-container
+.loader-controls
+button {
+    background: white;
+    padding: 10px;
+    border: none;
+    color: black;
+}
+
+.demo-container
+.loader-controls
+button:hover {
+    outline: 1px green solid;
+    background: rgb(192, 188, 188);
+}
+
+.footer a {
+    color: rgb(46, 201, 46);
+}
